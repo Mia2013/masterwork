@@ -1,0 +1,72 @@
+components:
+  schemas:
+    UserUpdateProfile:
+      type: object
+      required:
+        - oldPassword
+      properties:
+        name:
+          type: string
+          description: The new name of the registered user
+        email:
+          type: string
+          description: The new email of the registered user
+        currentPassword:
+          type: string
+          description: The previous password of the registered user
+        password:
+          type: string
+          description: The new password of the registered user
+      example:
+        name: John Doe,
+        email: johndoe@test.com,
+        currentPassword: JohnsPassword,
+        password: newJohnsPassword
+    
+    UserUpdateResponse:
+     type: object
+     properties:
+       token:
+         type: string
+         description: JSON Web Token
+     example:
+       token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+    
+    UserUpdateError:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Some error
+      example:
+          message: Hibás jelszót adott meg
+       
+tags:
+  name: UpdateProfile
+  description: Change in user data managing API
+
+/users:
+  patch:
+    summary: Update user data
+    tags: [UpdateProfile]
+    security:
+        - bearerAuth: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UserUpdateProfile'
+    responses:
+      200:
+        description: The update was successfull
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdateResponse'
+      400:
+        description: There was an error
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdateError'

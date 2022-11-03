@@ -1,0 +1,66 @@
+components:
+  schemas:
+
+    UserLogin:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          description: The email of the user logging in
+        password:
+          type: string
+          description: The password of the user logging in
+      example:
+        email: johndoe@test.com
+        password: JohnsPassword
+
+    UserLoginResponse:
+     type: object
+     properties:
+       token:
+         type: string
+         description: JWT token with user data and status
+     example:
+       token: asdaCCAAAAS332fsdfSDFSDfSDSDFSD
+
+    loginError:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Some error
+      example:
+          message: Nem megfelelő email cím vagy jelszó
+
+
+
+tags:
+  name: Login
+  description: User login data managing API
+
+/login:
+  post:
+    summary: User loggin in
+    tags: [Login]
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UserLogin'
+    responses:
+      200:
+        description: The login was successfull
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserLoginResponse'
+      400:
+        description: There was an error because the data is incorrect
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/loginError'

@@ -1,0 +1,72 @@
+components:
+  schemas:
+
+    CakesResponse:
+      type: object
+      properties:
+        products:
+          type: array
+          description: This is an array that contains all the cake Objects
+          cakes:
+            type: object
+            properties:
+              _id:
+                type: string
+                readOnly: true
+                description: The unique id of each cake
+              name:
+                type: string
+                description: The name of the cake
+              price:
+                type: integer
+                description: The price of the cake
+              allergenic:
+                type: string
+                description: The description of allergens in the cake
+              description:
+                type: string
+                description: The description of the cake 
+                
+      example:
+        {
+          cakes: [
+            {
+              _id: 627924205e35a93a9f67cb10,
+              name: Dobos torta,
+              price: 650,
+              allergenic: tojás,
+              description: Klasszikus Dobos torta
+            }
+          ]
+        }
+
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Server error
+      example:
+          message: Internal Server Error
+
+tags:
+  name: Cakes
+  description: Cakes data managing API
+
+/cakes:
+  get:
+    summary: Load cakes from database
+    tags: [Cakes]
+    responses:
+      200:
+        description: Cakes are successfully loaded from the database
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CakesResponse'
+      500:
+        description: There was some error connecting to mongoDB
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Error'

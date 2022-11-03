@@ -1,0 +1,236 @@
+components:
+  schemas:
+    AddOrder:
+      type: object
+      properties:
+        productId:
+          type: string
+          description: The id of the chosen product
+        slice:
+          type: string
+          description: How many slice of cake
+      example:
+        productId: 1,
+        slice: 6,
+
+    AddOrderResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The id of the order
+        status:
+          type: string
+          description: The status of the order
+        orderDate:
+          type: integer
+          description: The time when the order was placed
+        productId:
+          type: string
+          description: The id of the chosen product
+        userId:
+          type: string
+          description: The id of the user who add the product in cart
+        slice:
+          type: number
+          description: How many slice of cake
+      example:
+        _id: 627924205e35a93a9f67cb10,
+        status: pending,
+        orderDate: 1995-12-17T03:24:00,
+        slice: 6
+        userId: 627924205e35a93a9f67cb33,
+        productId: 627924205e35a93a9f67cb22,
+
+    BuyProductsResponse:
+      type: object
+      properties:
+        purchases:
+          type: array
+          items:
+            type: object
+            properties:
+              _id:
+                type: string
+              userId:
+                type: string
+              paidDate:
+                type: date
+              productId:
+                type: string
+              slice:
+                type: number
+              receiptDate:
+                type: date
+      example: 
+        {
+          purchases: [
+            {
+              _id: '627b8aca069d93e828b84de8',
+              userId: '627b8aca069d93e828b84d17',
+              paidDate: '2022-05-11T10:07:06.177Z',
+              productId: 627b8aca069d93e828b84d17,
+              slice: 6,
+              receiptDate: '1995-12-17T03:24:00',
+            }
+          ]
+        }
+    RemoveProductResponse:
+     type: object
+     properties:
+       confirmation:
+         type: string
+         description: Confirmation message after successfull remove
+     example:
+       confirmation: Termék törölve
+
+    OrdersResponse:
+      type: Object
+      properties:
+        orders:
+          type: Array
+          description: This is an Array that contains pending status of items
+          items:
+            type: Object
+            properties:
+              _id:
+                type: String
+                description: The unique id of each order in database
+              status:
+                type: String
+                description: The status of the order
+              orderDate:
+                type: Date
+                description: The Date when cake move into the cart
+              slice:
+                type: Number
+                description: How many slices of cake
+              userId:
+                type: String
+                description: The ID of user 
+              productId:
+              type: object
+              properties:
+                _id:
+                  type: string
+                  readOnly: true
+                  description: The unique id of each cake
+                name:
+                  type: string
+                  description: The name of the cake
+                price:
+                  type: integer
+                  description: The price of the cake
+                allergenic:
+                  type: string
+                  description: The description of allergens in the cake
+                description:
+                  type: string
+                  description: The description of the cake 
+                
+      example:
+         {
+          orders: [
+          {
+              _id: 62797f40599225213ed11123,
+              status: pending,
+              orderDate: 1995-12-17T03:24:00,
+              slice: 6,
+              userId: 62797f40599225213ed13456,
+              productId: {
+                _id: 62797f40599225213ed16789,
+                name: Dobos torta,
+                price: 550,
+                allergenic: tojás,
+                description: Klasszikus Dobos torta
+              },
+          }
+          ]
+         }
+
+ 
+tags:
+  name: Orders
+  description: The orders managing API
+
+/orders:
+  post:
+    summary: Place an order for a cake
+    tags: [Orders]
+    security:
+        - bearerAuth: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AddOrder'
+    responses:
+      200:
+        description: The order was successfully placed
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddOrderResponse'
+
+  patch:
+    summary: Buying products from the Cart & saving purchases
+    tags: [Orders]
+    security:
+        - bearerAuth: []
+
+    responses:
+      200:
+        description: The update was successfull
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BuyProductsResponse'
+      400:
+        description: There was an error
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Error'
+
+  delete:
+    summary: Remove product from the Cart
+    tags: [Orders]
+    security:
+        - bearerAuth: []
+    parameters:
+      - in: path
+        name: orderId
+        required: true
+        schema:
+          type: string
+          description: The auto-generated id of each order
+          example: 62797f40599225213ed16789
+
+    responses:
+      200:
+        description: The update was successfull
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RemoveProductResponse'
+                
+  get:
+    summary: Load items to cart from the database
+    tags: [Orders]
+    security:
+        - bearerAuth: []
+ 
+    responses:
+      200:
+        description: Orders are successfully loaded from the database
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrdersResponse'
+      500:
+        description: There was an error
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Error'

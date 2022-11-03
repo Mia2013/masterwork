@@ -1,0 +1,91 @@
+components:
+  schemas:
+    PurchasesResponse:
+      type: Object
+      properties:
+        orders:
+          type: Array
+          description: This is an Array that contains pending status of items
+          items:
+            type: Object
+            properties:
+              _id:
+                type: String
+                description: The unique id of each order in database
+              userId:
+                type: String
+                description: The ID of user 
+              paidDate:
+                type: Date
+                description: The date when the cake bought from the cart
+              slice:
+                type: Number
+                description: How many slices of cake            
+              receiptDate:
+                type: Date
+                description: The date on which you want to receive the cake
+              productId:
+              type: object
+              properties:
+                _id:
+                  type: string
+                  readOnly: true
+                  description: The unique id of each cake
+                name:
+                  type: string
+                  description: The name of the cake
+                price:
+                  type: integer
+                  description: The price of the cake
+                allergenic:
+                  type: string
+                  description: The description of allergens in the cake
+                description:
+                  type: string
+                  description: The description of the cake 
+                
+      example:
+         {
+          purchases: [
+          {
+              _id: 62797f40599225213ed11123,
+              userId: 62797f40599225213ed13456,
+              paidDate: 1995-12-17T03:24:00,
+              slice: 6,
+              receiptDate: 1995-12-17T03:24:00,
+              productId: {
+                _id: 62797f40599225213ed16789,
+                name: Dobos torta,
+                price: 550,
+                allergenic: tojás,
+                description: Klasszikus Dobos torta
+              },
+          }
+          ]
+         }
+
+ 
+tags:
+  name: Purchases
+  description: The Purchases managing API
+
+/purchases:  
+  get:
+    summary: Load items to purchases from the database
+    tags: [Purchases]
+    security:
+        - bearerAuth: []
+ 
+    responses:
+      200:
+        description: Purchases are successfully loaded from the database
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PurchasesResponse:'
+      500:
+        description: There was an error
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Error'

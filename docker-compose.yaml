@@ -1,0 +1,41 @@
+version: '3'
+services:
+  mongo:
+    image: mongo
+    ports:
+    - '27037:27017'
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo localhost:27017/test --quiet
+  open-api-doc:
+    build: open-api-doc
+    ports:
+      - '4000:4000'
+    volumes:
+      - /app/node_modules
+      - ./open-api-doc:/app
+  frontend:
+    build: frontend
+    environment:
+      - REACT_APP_BACKEND_URI=${REACT_APP_BACKEND_URI}
+    ports:
+      - '3000:3000'
+    volumes:
+      - /app/node_modules
+      - ./frontend:/app
+    depends_on:
+      - backend
+  backend:
+    build: backend
+    ports:
+      - '8080:8080'
+    environment:
+      - PORT=${PORT}
+      - MONGO_URI=${MONGO_URI}
+      - TOKEN_SECRET=${TOKEN_SECRET}
+      - TEST_MONGO_URI=${TEST_MONGO_URI}
+    volumes:
+      - /app/node_modules
+      - ./backend:/app
+  #  depends_on:
+  #    mongo:
+  #      condition: service_healthy
