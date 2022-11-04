@@ -2,7 +2,7 @@
 @import "~bootstrap/scss/bootstrap";
 
 :root {
-  --color: rgb(6, 5, 6);
+  --color: rgb(243, 47, 143);
   --color-purple: rgb(128, 0, 128);
   --color-nav: rgba(219, 27, 187, 0.8);
   --background-color: rgba(245, 245, 245, 0.4);
@@ -251,57 +251,110 @@ summary {
   font-family: var(--font-family-amatic);
 }
 
-
-
 .box-container {
-  font-weight: bold;
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
   justify-content: center;
-  margin-bottom: 1rem;
 }
 
-.box-container .box {
-  min-height: 230px;
-  max-height: 600px;
-  border: var(--border);
-  border-radius: var(--border-radius);
-  color: var(--color-purple);
-  font-family: var(--font-family-amatic);
-  font-style: italic;
-  text-align: center;
-  gap: 2rem;
-  padding: 1rem;
-  width: 30%;
-  box-shadow: 5.5px 11px 11px rgb(84, 84, 84);
-  overflow: hidden;
-  background-color: white;
-}
 
-.box-container .box > h3 {
-  font-weight: bolder;
-  padding: 5px;
-}
 
 .box-container .box:hover {
   border: var(--border-hover);
   border-radius: var(--border-radius-hover);
-  color: var(--color);
-  text-decoration: underline;
 }
 
+.box-container .box img {
+  max-width: 10rem;
+  border-radius: 20%;
+  justify-self:flex-start;
+  grid-area: img;
+}
 
+.box-container .box .content {
+  grid-area: content;
+}
 
-.classic-cake .box-container .box .content h3 {
-  line-height: 1.8;
+.box-container .box .content h3 {
+  font-weight: bolder;
+  padding: 5px;
   display: block;
 }
 
-.classic-cake .box-container .box .content p {
-  line-height: 1.8;
-  padding: 1rem 0;
+
+
+
+.box-container .box details{
+  grid-area: allergenic;
+  
+  
 }
+
+.box-container .box {
+  border: var(--border);
+  border-radius: var(--border-radius);
+  display: grid;
+  grid-template-areas:
+  'img  content'
+  'img  content'
+  'allergenic allergenic';
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  width: 45%;
+  font-family: var(--font-family-amatic);
+
+}
+// .box-container {
+//   font-weight: bold;
+//   display: flex;
+//   flex-wrap: wrap;
+//   gap: 2rem;
+//   justify-content: center;
+//   margin-bottom: 1rem;
+// }
+
+// .box-container .box {
+//   min-height: 230px;
+//   max-height: 600px;
+//   border: var(--border);
+//   border-radius: var(--border-radius);
+//   color: var(--color-purple);
+//   font-family: var(--font-family-amatic);
+//   font-style: italic;
+//   text-align: center;
+//   gap: 2rem;
+//   padding: 1rem;
+//   width: 30%;
+//   box-shadow: 5.5px 11px 11px rgb(84, 84, 84);
+//   overflow: hidden;
+//   background-color: white;
+// }
+
+// .box-container .box > h3 {
+//   font-weight: bolder;
+//   padding: 5px;
+// }
+
+// .box-container .box:hover {
+//   border: var(--border-hover);
+//   border-radius: var(--border-radius-hover);
+//   color: var(--color);
+//   text-decoration: underline;
+// }
+
+
+
+// .classic-cake .box-container .box .content h3 {
+//   line-height: 1.8;
+//   display: block;
+// }
+
+// .classic-cake .box-container .box .content p {
+//   line-height: 1.8;
+//   padding: 1rem 0;
+// }
 
 
 

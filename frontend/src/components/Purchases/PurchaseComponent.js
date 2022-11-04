@@ -3,7 +3,7 @@ import Alert from "../Alert";
 
 export default function PurchasesCompnent() {
   const [purchases, setPurchases] = useState([]);
-  const [alertMessage, setAlertMessage] = useState("");
+  const [alertMessage, setAlertMessage] = useState({});
   useEffect(() => {
     getData(setAlertMessage, setPurchases);
   }, []);
