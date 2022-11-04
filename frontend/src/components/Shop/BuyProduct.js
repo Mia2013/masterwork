@@ -2,7 +2,6 @@ import { useState } from "react";
 import Alert from "../Alert";
 import { useLoggedInUserContext } from "../LoggedInUserContextProvider";
 
-
 export default function BuyProduct({ id, price }) {
   const { loggedInUser } = useLoggedInUserContext();
 
@@ -67,45 +66,46 @@ export default function BuyProduct({ id, price }) {
 
   return (
     <div>
-      <p>1 szelet: {price} Ft</p>
-      {loggedInUser.userId && 
-      <div>
-      <p>
-        {formData.slice} szelet: {formData.slice * price} Ft
-      </p>
-      <form onSubmit={handleOnSubmit}>
-        <div >
-          <button
-            className="btn mx-2"
-            type="button"
-            onClick={(e) => handleOnClick(e)}
-            value="-1"
-          >
-            -
-          </button>
-          <h4 className="d-inline">{formData.slice} </h4>
-          <button
-            className="btn mx-2"
-            type="button"
-            onClick={(e) => handleOnClick(e)}
-            value="1"
-          >
-            +
-          </button>
-    
-          <button className="bi bi-cart btn d-inline" type="submit" >
-            {" "}
-            Kosárba teszem
-          </button>
+      <p className="ms-3">1 szelet: {price} Ft</p>
+      {loggedInUser.userId && (
+        <div>
+          <p className="ms-3">
+            {formData.slice} szelet: {formData.slice * price} Ft
+          </p>
+          <form onSubmit={handleOnSubmit}>
+            <div>
+              <button
+                className="btn mx-2"
+                type="button"
+                onClick={(e) => handleOnClick(e)}
+                value="-1"
+              >
+                -
+              </button>
+              <h4 className="d-inline">{formData.slice} </h4>
+              <button
+                className="btn mx-2"
+                type="button"
+                onClick={(e) => handleOnClick(e)}
+                value="1"
+              >
+                +
+              </button>
+
+              <button className="bi bi-cart btn d-inline" type="submit">
+                {" "}
+                Kosárba teszem
+              </button>
+            </div>
+            {alertMessage.value && (
+              <Alert
+                className={alertMessage.className}
+                value={alertMessage.value}
+              />
+            )}
+          </form>
         </div>
-        {alertMessage.value && (
-          <Alert
-            className={alertMessage.className}
-            value={alertMessage.value}
-          />
-        )}
-      </form>
-    </div>}
+      )}
     </div>
   );
 }

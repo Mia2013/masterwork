@@ -54,11 +54,10 @@ nav {
   font-weight: bolder;
   font-size: 1.25rem;
 }
-.navbar-nav .nav-link{
+.navbar-nav .nav-link {
   font-size: 1.2rem;
-
 }
-.regform{
+.regform {
   margin-top: 150px;
 }
 
@@ -75,12 +74,13 @@ h2 {
   letter-spacing: 2px;
 }
 
-h4{
+h4 {
   color: var(--color);
   font-family: var(--font-family-amatic);
 }
 
-p, a {
+p,
+a {
   font-family: var(--font-family-amatic);
   color: var(--color-purple);
 }
@@ -92,7 +92,7 @@ p, a {
   margin: auto;
 }
 
-.contact-content{
+.contact-content {
   width: 70%;
 }
 
@@ -117,7 +117,8 @@ p, a {
   background-color: var(--background-color);
 }
 
-.home-logo > h1, .home-logo > h2{
+.home-logo > h1,
+.home-logo > h2 {
   font-size: 5rem;
 }
 
@@ -125,7 +126,7 @@ p, a {
   width: 15%;
 }
 
-.home-logo{
+.home-logo {
   margin-top: 160px;
 }
 
@@ -152,15 +153,14 @@ p, a {
   background-size: cover;
 }
 
-.cart-container{
+.cart-container {
   margin-top: 200px;
 }
 
-.cakes-cover{
+.cakes-cover {
   background-image: url(../public/assets/whiskey.jpg);
   background-position: center;
 }
-
 
 .cakes-content > div > a {
   color: var(--color);
@@ -225,11 +225,11 @@ footer > ul > li {
   height: 100%;
 }
 
-.contact-container{
+.contact-container {
   margin-top: 0px;
   padding-top: 10px;
   box-sizing: border-box;
-  background-image:  url(../public/assets/3d-minimal-notification-bell-icon-with-color-objects-floating-around-pastel-background-new-alert-concept-social-media-element-3d-bell-alarm-vector-render-isolated-pink-background_412828-999.jpg);
+  background-image: url(../public/assets/3d-minimal-notification-bell-icon-with-color-objects-floating-around-pastel-background-new-alert-concept-social-media-element-3d-bell-alarm-vector-render-isolated-pink-background_412828-999.jpg);
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -258,8 +258,6 @@ summary {
   justify-content: center;
 }
 
-
-
 .box-container .box:hover {
   border: var(--border-hover);
   border-radius: var(--border-radius-hover);
@@ -268,7 +266,8 @@ summary {
 .box-container .box img {
   max-width: 10rem;
   border-radius: 20%;
-  justify-self:flex-start;
+  justify-self: flex-start;
+  align-self: flex-start;
   grid-area: img;
 }
 
@@ -280,15 +279,11 @@ summary {
   font-weight: bolder;
   padding: 5px;
   display: block;
+  grid-area: title;
 }
 
-
-
-
-.box-container .box details{
+.box-container .box details {
   grid-area: allergenic;
-  
-  
 }
 
 .box-container .box {
@@ -296,105 +291,36 @@ summary {
   border-radius: var(--border-radius);
   display: grid;
   grid-template-areas:
-  'img  content'
-  'img  content'
-  'allergenic allergenic';
+    "title title"
+    "img  content"
+    "img  content"
+    "allergenic allergenic";
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
   padding: 1rem;
   width: 45%;
   font-family: var(--font-family-amatic);
-
 }
-// .box-container {
-//   font-weight: bold;
-//   display: flex;
-//   flex-wrap: wrap;
-//   gap: 2rem;
-//   justify-content: center;
-//   margin-bottom: 1rem;
-// }
-
-// .box-container .box {
-//   min-height: 230px;
-//   max-height: 600px;
-//   border: var(--border);
-//   border-radius: var(--border-radius);
-//   color: var(--color-purple);
-//   font-family: var(--font-family-amatic);
-//   font-style: italic;
-//   text-align: center;
-//   gap: 2rem;
-//   padding: 1rem;
-//   width: 30%;
-//   box-shadow: 5.5px 11px 11px rgb(84, 84, 84);
-//   overflow: hidden;
-//   background-color: white;
-// }
-
-// .box-container .box > h3 {
-//   font-weight: bolder;
-//   padding: 5px;
-// }
-
-// .box-container .box:hover {
-//   border: var(--border-hover);
-//   border-radius: var(--border-radius-hover);
-//   color: var(--color);
-//   text-decoration: underline;
-// }
-
-
-
-// .classic-cake .box-container .box .content h3 {
-//   line-height: 1.8;
-//   display: block;
-// }
-
-// .classic-cake .box-container .box .content p {
-//   line-height: 1.8;
-//   padding: 1rem 0;
-// }
-
-
 
 .description {
   font-family: var(--font-family-poppins);
   font-weight: 300;
   font-size: 0.7rem;
-  min-height: 85px;
-}
-
-.description2 {
-  font-family: var(--font-family-poppins);
-  font-weight: 300;
-  font-size: 0.7rem;
-}
-
-.form-select, option{
-font-family: var(--font-family-amatic);
-font-size: 1.3rem;
-color: var(--color-purple);
-}
-
-
-#cake-select{
-  width: 45%;
+  // min-height: 85px;
 }
 
 .icon-red {
   color: red;
-} 
+}
 
-table{
+table {
   font-family: var(--font-family-amatic);
 }
 
-th{
+th {
   color: var(--color);
-
 }
- td{
+td {
   color: var(--color-purple);
 }
 .table-borderless > tbody > tr > td,
@@ -403,33 +329,33 @@ th{
 .table-borderless > tfoot > tr > th,
 .table-borderless > thead > tr > td,
 .table-borderless > thead > tr > th {
-    border: none;
+  border: none;
 }
 
-
-.btn, label, .alert {
+.btn,
+label,
+.alert {
   font-family: var(--font-family-amatic);
 }
 
-.purchases-container{
+.purchases-container {
   padding-top: 50px;
   min-height: 100%;
 }
 
-
 @media only screen and (min-width: 200px) and (max-width: 576px) {
-  #cake-select{
+  #cake-select {
     width: 100%;
   }
   .navbar-collapse {
     background: var(--color-nav);
   }
-  
+
   .cover {
     height: 400px;
   }
 
-  .home-logo{
+  .home-logo {
     margin-top: 130px;
   }
 
@@ -437,17 +363,16 @@ th{
     width: 20%;
   }
 
-  .home-logo > h1, .home-logo > h2{
+  .home-logo > h1,
+  .home-logo > h2 {
     font-size: 3rem;
   }
   .introduce > p {
     font-size: 1em;
   }
 
-
-
   .home-content,
-  .cakes-content  {
+  .cakes-content {
     padding-bottom: 20px;
     margin-bottom: 170px;
   }
@@ -463,7 +388,7 @@ th{
     max-width: 90%;
   }
 
-  table{
+  table {
     font-size: smaller;
   }
 
@@ -495,7 +420,7 @@ th{
     font-size: 0.8rem;
   }
 
-  .purchases-container{
+  .purchases-container {
     height: 100%;
     padding-bottom: 20px;
     margin-bottom: 100px;
@@ -506,7 +431,7 @@ th{
   }
 
   .box-container .box {
-    width: 85%;
+    width: 95%;
     height: fit-content;
   }
 
@@ -516,18 +441,16 @@ th{
     padding: 0;
   }
 
-
   .cakes-container,
   .cart-container,
   .contact-container,
   .profile-container,
-  .login-container, 
+  .login-container,
   .register-container {
     padding-bottom: 100px;
     margin-bottom: 100px;
     width: 95%;
   }
-
 }
 
 @media only screen and (min-width: 577px) and (max-width: 768px) {
@@ -541,8 +464,7 @@ th{
     margin-bottom: 100px;
   }
 
-
-  #cake-select{
+  #cake-select {
     width: 60%;
   }
   .cover {
@@ -553,11 +475,12 @@ th{
     width: 25%;
   }
 
-  .home-logo{
+  .home-logo {
     margin-top: 110px;
   }
 
-  .home-logo > h1, .home-logo > h2{
+  .home-logo > h1,
+  .home-logo > h2 {
     font-size: 3rem;
   }
 
@@ -566,7 +489,7 @@ th{
   }
 
   .home-content,
-  .cakes-content  {
+  .cakes-content {
     padding-bottom: 20px;
     margin-bottom: 170px;
   }
@@ -601,10 +524,10 @@ th{
   }
 
   .box-container .box {
-    width: 45%;
+    width: 85%;
   }
 
-  .purchases-container{
+  .purchases-container {
     padding-bottom: 10px;
     margin-bottom: 100px;
   }
@@ -632,9 +555,8 @@ th{
   .logo {
     width: 15%;
   }
-  .home-logo{
+  .home-logo {
     margin-top: 110px;
-
   }
 
   .introduce > p {
@@ -654,16 +576,13 @@ th{
     font-size: 0.5rem;
   }
 
-
   .box-container .box {
-    width: 45%;
+    width: 85%;
   }
 
   .contact-content {
     width: 70%;
   }
-
-
 }
 
 @media only screen and (min-width: 993px) and (max-width: 1200px) {
@@ -677,14 +596,9 @@ th{
   .logo {
     width: 20%;
   }
-  
-  .home-logo{
+
+  .home-logo {
     margin-top: 120px;
-
-  }
-
-  .box-container .box {
-    width: 45%;
   }
 }
 
@@ -699,9 +613,8 @@ th{
   .logo {
     width: 20%;
   }
-  .home-logo{
+  .home-logo {
     margin-top: 120px;
-
   }
 
   .home-content {
@@ -710,5 +623,4 @@ th{
     width: 55%;
     margin: auto;
   }
-
 }
